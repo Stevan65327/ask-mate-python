@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Questions</title>
+</head>
+<body>
+
+{% extends "navbar.html" %}
+{% block content_after_navbar %}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Submission Time</th>
+      <th>View Number</th>
+      <th>Vote Number</th>
+      <th>Title</th>
+      <th>Message</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+{% for item in data %}
+        <tr>
+            <td>{{ item['id'] }}</td>
+            <td>{{ item['submission_time'] }}</td>
+            <td>{{ item['view_number'] }}</td>
+            <td>{{ item['vote_number'] }}</td>
+            <td>
+                <a href="/question/{{ item['id'] }}">
+                    {{ item['title'] }}
+                </a>
+            </td>
+            <td>{{ item['message'] }}</td>
+            <!--TO BE FIXED <td><img src=" url_for("download_file", name=item['image']) }}"></td>-->
+            <td>{{ item['image'] }}</td>
+            <td><form action="/question/{{ item['id'] }}/vote-up">
+                <input type="submit" name="vote_up" value="&#9650; Vote up!">
+            </form></td>
+            <td><form action="/question/{{ item['id'] }}/vote-down">
+                <input type="submit" name="vote_down" value = "&#9660; Vote Down!">
+            </form></td>
+        </tr>
+{% endfor %}
+</table>
+<br>
+    <div class="list-bottom-bar">
+        <div class="sorting-menu">
+            <form action="/list" method="get">Sort By:
+                <input type="radio" id="id" name="sort_by" value="id" checked="checked">
+                <label for="id">ID</label>
+                <input type="radio" id="submission_time" name="sort_by" value="submission_time">
+                <label for="submission_time">Submission Time</label>
+                <input type="radio" id="view_number" name="sort_by" value="view_number">
+                <label for="view_number">Number of Views</label>
+                <input type="radio" id="vote_number" name="sort_by" value="vote_number">
+                <label for="vote_number">Number of Votes</label>
+                <input type="radio" id="title" name="sort_by" value="title">
+                <label for="title">Title</label>
+                <input type="radio" id="message" name="sort_by" value="message">
+                <label for="message">Message</label><br>Direction:
+                <input type="radio" id="ASC" name="direction" value="ASC" checked="checked">
+                <label for="ASC">Ascending</label>
+                <input type="radio" id="DESC" name="direction" value="DESC">
+                <label for="DESC">Descending</label><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="no-sorting-menu">
+            <ul>
+                <li class="subitem"><a href="/">Home page</a></li>
+                <li class="subitem"><a href="/add-question"> Add a new question </a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

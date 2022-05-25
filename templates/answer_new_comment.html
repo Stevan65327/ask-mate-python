@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New comment to answer</title>
+</head>
+<body>
+{% extends "navbar.html" %}
+{% block content_after_navbar %}
+    <h2> Answer:</h2>
+    <p>  {{ answer['message'] }}</p>
+    <h5>  Add your comment below: </h5>
+    <form name="answer_new_comment" method="post">
+        <input name="comment" type="text" size="50">
+        <input type="hidden" name="question_id" value="{{answer['question_id']}}" />
+        <input type="submit">
+    </form>
+<a href="/list">Home page</a>
+{% endblock %}
+</body>
+</html>

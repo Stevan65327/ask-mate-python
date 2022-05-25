@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Questions</title>
+</head>
+<body>
+{% extends "navbar.html" %}
+{% block content_after_navbar %}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Submission Time</th>
+      <th>View Number</th>
+      <th>Vote Number</th>
+      <th>Title</th>
+      <th>Message</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+{% for item in search_results %}
+        <tr>
+            <td>{{ item['id'] }}</td>
+            <td>{{ item['submission_time'] }}</td>
+            <td>{{ item['view_number'] }}</td>
+            <td>{{ item['vote_number'] }}</td>
+            <td>
+                <a href="/question/{{ item['id'] }}">
+                    {{ item['title'] }}
+                </a>
+            </td>
+            <td>{{ item['message'] }}</td>
+            <!--TO BE FIXED <td><img src=" url_for("download_file", name=item['image']) }}"></td>-->
+            <td>{{ item['image'] }}</td>
+            <td><form action="/question/{{ item['id'] }}/vote-up">
+                <input type="submit" name="vote_up" value="&#9650; Vote up!">
+            </form></td>
+            <td><form action="/question/{{ item['id'] }}/vote-down">
+                <input type="submit" name="vote_down" value = "&#9660; Vote Down!">
+            </form></td>
+        </tr>
+{% endfor %}
+</table>
+<br>
+
+{% endblock %}
+</body>
+</html>

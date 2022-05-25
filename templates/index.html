@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AskMate Main Page</title>
+    <link rel="stylesheet" href="../static/style/style.css">
+</head>
+<div>
+    <h1>Welcome to Ask Mate, mate!</h1>
+</div>
+<body>
+{% extends "navbar.html" %}
+
+{% block content_after_navbar %}
+<p><h3>Five latest questions:</h3></p>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Submission Time</th>
+      <th>View Number</th>
+      <th>Vote Number</th>
+      <th>Title</th>
+      <th>Message</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+{% for item in data %}
+        <tr>
+            <td>{{ item['id'] }}</td>
+            <td>{{ item['submission_time'] }}</td>
+            <td>{{ item['view_number'] }}</td>
+            <td>{{ item['vote_number'] }}</td>
+            <td>
+                <a href="/question/{{ item['id'] }}">
+                    {{ item['title'] }}
+                </a>
+            </td>
+            <td>{{ item['message'] }}</td>
+            {% if item['image'] %}
+                <td><img src=" {{ url_for('static', filename=item['image']) }}" width="100px" height="100px"></td>
+            {% else %}
+                <td></td>
+            {% endif %}
+            <td><form action="/question/{{ item['id'] }}/vote-up">
+                <input type="submit" name="vote_up" value="&#9650; Vote up!">
+            </form></td>
+            <td><form action="/question/{{ item['id'] }}/vote-down">
+                <input type="submit" name="vote_down" value = "&#9660; Vote Down!">
+            </form></td>
+        </tr>
+{% endfor %}
+</table>
+{% endblock %}
+</body>
+</html>

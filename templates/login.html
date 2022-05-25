@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form method="post">
+        <p>
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username">
+        </p>
+            <p>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password">
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+{% if error_message %}
+  <p> {{ error_message }} </p>
+{% endif %}
+<script>
+
+   query_string = new URLSearchParams(window.location.search);
+   if (query_string.has("backurl")){
+       alert("You must log in to continue")
+   }
+
+</script>
+
+<a href="/">Go back</a>
+</body>
+</html>

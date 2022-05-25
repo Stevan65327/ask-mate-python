@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Comment</title>
+</head>
+<body>
+{% extends "navbar.html" %}
+{% block content_after_navbar %}
+<h1>
+    Menu to Edit a comment
+</h1>
+{% for comment in comments %}
+    {% if comment['id'] == comment_id %}
+        <p>Comment to be edited:</p>
+        <form action="/comment/{{ question_id }}/{{ comment['id'] }}/edit" name="edit_comment" method="post">
+        <p>Message: <br><textarea name="message" cols="50" name="message" rows="10">{{ comment['message'] }}</textarea></p>
+        <input type="submit" value="submit" />
+</form>
+    {% endif %}
+
+{% endfor %}
+{% endblock %}
+</body>
+</html>

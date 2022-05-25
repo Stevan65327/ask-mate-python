@@ -1,0 +1,23 @@
+Improvements:
+    vote number
+    how to add a image if needed?
+(suggestion) Implement template for all the pages
+How to go back from Submit new question to home page or list?
+(to correct) everytime we delete 1 question, the change is shown only when we restart the server
+We need more descriptive function names
+We need some way of rehashing question and answer IDs - it cannot be related to the length of the list, as this will always change - in reality we should be creating a unique ID for each
+We seem to have the same piece of code (writing the rows) a lot of times in CRUD
+_____________________
+Improvements from the review with the guys:
+
+add-question -> to not use dictionary
+edit question -> use CRUD.update
+CRUD -> rewrite all the writer functions
+CRUD.delete -> We should use the writer function here instead of duplicating code
+
+
+Done:
+(fixed) There's a defect in the answers input -> It only shows up when we rerun the server
+(done) When adding a question: submission time
+(done) When adding a question: view number?
+

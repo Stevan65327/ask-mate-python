@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>navbar</title>
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/style/style.css">
+
+</head>
+<body>
+
+<div class="top-nav-bar">
+    <ul>
+        <li class="subitem"><a href="/">Home</a></li>
+        <li class="subitem"><a href="/list">List of Questions</a></li>
+        <li class="subitem"><a href="/add-question">Add Question</a></li>
+        <li class="subitem"><a href="/users">List of Users</a></li>
+        <li class="subitem"><a href="/">About</a></li>
+        <li class="subitem" style="float:right"><a href="/registration">Registration</a></li>
+        <li class="subitem" style="float:right"><a href="/login">Login</a></li>
+        <li class="subitem" style="float:right"><a href="/logout">Logout</a></li>
+        <div class="search-container">
+            <form action="/" name="question_search" method="get">
+                <input type="text" name="search_phrase" placeholder="Search..">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </ul>
+</div>
+{% block content_after_navbar %}
+
+{% endblock %}
+<script src="/static/js/menuItems.js"></script>
+</body>
+</html>

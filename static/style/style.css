@@ -1,0 +1,228 @@
+/*New colors*/
+/*lighest-green = #FAF9F5 -> body background*/
+
+/*mid-green = #DCFADC -> hover*/
+/*dark-green = #90AD90 -> nav bar*/
+/*soft-pink = #F5E8FA*/
+/*brown = #ADAA90*/
+
+
+body {
+    margin-top: 0px;
+    background-color: #FAF9F5;
+}
+
+/* TOP NAV BAR */
+.top-nav-bar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #90AD90;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+.top-nav-bar li:hover {
+    background-color: #DCFADC;
+    color: black;
+}
+
+.subitem {
+    padding: 15px;
+    display: block;
+    background-color: #90AD90;
+}
+
+.top-nav-bar li.active {
+    background-color: #90AD90;
+    color: white;
+}
+
+/* Style the search box inside the navigation bar */
+.top-nav-bar .search-container {
+    float: right;
+}
+
+.top-nav-bar input[type=text] {
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.top-nav-bar .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.top-nav-bar .search-container button:hover {
+    background: #ccc;
+}
+
+/* Bottom bar for questions */
+.question-bottom-bar {
+    background-color: #90AD90;
+    overflow: hidden;
+    bottom: 0;
+    width: 100%;
+    font-size: 18px;
+}
+
+.question-bottom-bar li:hover {
+    background-color: #DCFADC;
+    color: black;
+}
+
+.question-bottom-bar .question-delete-container {
+    float: right;
+}
+
+.question-bottom-bar .question-delete-container .button {
+    background-color: #90AD90;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.question-bottom-bar .question-delete-container .button:hover {
+    background-color: #DCFADC;
+}
+
+/* wrapper for questions' comments */
+.question-comment-wrapper{
+    margin-left: 30px;
+}
+
+.hr-for-comments{
+    width:50%;
+    text-align:left;
+    margin-left:30px;
+}
+/* wrapper for answers */
+.answer-wrapper{
+    text-align:left;
+    margin-left:30px;
+}
+
+.answer-container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+}
+
+.answer-vote-menu{
+    background-color: #ADAA90;
+    height: 110px;
+    width: 110px;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.answer-text{
+    background-color: #ADAA90;
+    padding: 10px;
+    flex-grow: 4;
+}
+
+#answer-top-line{
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+/* wrapper for comments */
+
+.answer-comments{
+    text-align:center;
+    margin-left:200px;
+    font-size: 12px;
+    border: 1px solid grey;
+}
+#h3-for-answers-comments{
+
+    text-align:left;
+}
+
+#Submission-time-comment{
+    width: 150px;
+}
+
+#Comment{
+    width: 500px;
+    text-align:left;
+}
+#Text-comment{
+    width: 150px;
+}
+
+/*Wrapper for bottom bar for list page*/
+.list-bottom-bar{
+
+}
+.no-sorting-menu{
+    display: flex;
+    background-color: #90AD90;
+    overflow: hidden;
+    bottom: 0;
+    width: 100%;
+    font-size: 18px;
+}
+
+.no-sorting-menu li:hover {
+    background-color: #DCFADC;
+    color: black;
+}
+
+/*style for registration*/
+.body-registration{
+    display: flex;
+    justify-content: center;
+    background-color: #FAF9F5;
+}
+
+.registration-wrapper{
+    display: flex;
+    background-color: #90AD90;
+    margin-top: 50px;
+    flex-direction: column;
+    height: auto;
+    width: 300px;
+    align-items: center;
+    padding: 10px;
+}
+
+.input-form label{
+    margin-left: 10px;
+    width:100%;
+}
+
+.input-form input{
+    margin-left: 10px;
+    width:auto;
+}

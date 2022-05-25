@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Confirmation</title>
+</head>
+<body>
+    <form method="post">
+        <button type="submit">Yes</button>
+        <button type="button"><a href="{{ url_for("display_question", question_id=question_id) }}">No</a></button>
+    </form>
+</body>
+</html>

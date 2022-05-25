@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AskMate - Add a question</title>
+</head>
+<body>
+{% extends "navbar.html" %}
+{% block content_after_navbar %}
+<p><h1>Add a question page</h1></p>
+<form action="/add-question" enctype="multipart/form-data" method="post">
+    <p>Title: <br><input name="title" type="text"/></p>
+    <p>Message: <br><textarea cols="50" name="message" rows="10" placeholder="Add your message here"></textarea><br /></p>
+    <input type="file" name="image_file" accept="image/*">
+    <input type="submit" value="Submit" />
+</form>
+<p><a href="/">Home page</a> </p>
+<p><a href="/list">List of questions</a> </p>
+{% endblock %}
+</body>
+</html>

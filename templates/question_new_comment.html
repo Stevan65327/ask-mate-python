@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New comment to question</title>
+</head>
+<body>
+{% extends "navbar.html" %}
+{% block content_after_navbar %}
+    <h2> {{ question['title'] }}</h2>
+    <p>  {{ question['message'] }}</p>
+    <h5>  Add the comment below: </h5>
+    <form name="question_new_comment" method="post">
+        <input name="comment" type="text" size="50">
+        <input type="submit">
+    </form>
+<a href="/list">Home page</a>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions detail</title>
+    <link rel="stylesheet" href="https://stackoverflow.design/product/resources/icons/#arrowup">
+</head>
+<body>
+{% extends "bottombar.html" %}
+{% block content_before_bottombar %}
+    <h2> {{ question['title'] }} </h2>
+    <p> {{ question['message'] }} </p>
+    <p>
+        {% if question['image'] %}
+            <h3>Image provided:</h3>
+            <td><img src=" {{ url_for('static', filename=question['image']) }}" width="300px" height="300px"></td>
+        {% else %}
+            <td></td>
+        {% endif %}
+    </p>
+    <!-- COMMENTS FOR QUESTION -->
+    <table class="question-comment-wrapper">
+        <hr class="hr-for-comments">
+        <caption><h4>Comments for the question</h4></caption>
+        <thead>
+        <tr>
+            <th>Submission Time</th>
+            <th>Comment</th>
+            <th> Text commented</th>
+            <th> Edit comment</th>
+            <th> Delete comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <!-- NEED A WAY TO FILTER OUT ANSWER COMMENTS...Q COMMENTS SHOULDN'T HAVE ANSWER ID -->
+            {% if comment["question_id"] != 'null' and comment["answer_id"] == none %}
+                <tr>
+                    <td>{{ comment['submission_time'] }} </td>
+                    <td>{{ comment['message'] }} </td>
+                    <td>Comment edited {{ comment['edited_count'] }} times</td>
+                    <td><a href="/comment/{{ question['id'] }}/{{ comment['id'] }}/edit">Edit this comment</a></td>
+                    <td><a href="/comment/{{ question['id'] }}/{{ comment['id'] }}/delete"> Delete this comment</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    </p>
+    <hr/>
+
+
+    <!-- ANSWERS -->
+    <!-- To get quantity of answers using javascript TO BE CONCLUDED-->
+    {#    <script>#}
+    {#        var table1 = document.getElementById('table1');#}
+    {#        var count = 0;#}
+    {#        for (var i = 0; i < table1.rows.length; i++) {#}
+    {#            for (var j = 0; j < table1.rows[i].cells.length; j++) {#}
+    {#                if (table1.rows[i].cells[j].innerHTML != question_id) {#}
+    {#                    count++;#}
+    {#                    alert(count);#}
+    {#                }#}
+    {#            }#}
+    {#        }#}
+    {#    </script>#}
+    <!-- ANSWERS TABLE -->
+    <h3> Answers: </h3>
+    <div class="answer-wrapper">
+        {% for answer in answers %}
+            <div class="answer-container">
+                <div class="answer-vote-menu">
+
+                    <form action="/answer/{{ answer['id'] }}/vote-up">
+                        <input type="submit" name="vote_up" value="&#9650; Vote up!">
+                    </form>
+                    <p><h4>Votes: {{ answer['vote_number'] }}</h4>
+                    <form method="post" action="/{{ question_id }}/answer/{{ answer['id'] }}/vote-down">
+                        <input type="submit" name="vote_down" value="&#9660; Vote Down!">
+                    </form>
+                </div>
+                <div class="answer-text">
+                    <h4 id="answer-top-line">Answer: </h4>
+                    <p>{{ answer['message'] }}</p>
+                    <p><a href="/answer/{{ answer['id'] }}/new-comment">Comment this answer</a></p>
+                </div>
+            </div>
+
+            <!-- COMMENTS TABLE -->
+            <div class="answer-comments">
+                <h3 id="h3-for-answers-comments">Answer's comments</h3>
+                <div>
+
+                    <thead>
+                    <tr>
+                        <th id="Comment">Comment</th>
+                        <th id="Submission-time-comment">Submission Time</th>
+                        <th id="Text-comment"> Text commented</th>
+                        <th> Edit comment</th>
+                        <th> Delete comment</th>
+                    </tr>
+                    </thead>
+                    {% for comment in comments %}
+
+                        {% if comment['answer_id'] == answer['id'] %}
+
+                            <tr>
+                                <td>{{ comment['submission_time'] }} </td>
+                                <td>{{ comment['message'] }} </td>
+                                <td>Comment edited {{ comment['edited_count'] }} times</td>
+                                <td><a href="/comment/{{ question['id'] }}/{{ comment['id'] }}/edit">Edit this
+                                    comment</a></td>
+                                <td><a href="/comment/{{ question['id'] }}/{{ comment['id'] }}/delete"> Delete this
+                                    comment</a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                </tbody>
+                </table>
+                </p>
+                <hr/>
+
+
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+</body>
+</html>

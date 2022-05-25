@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bottom bar for question</title>
+</head>
+<body>
+{% extends "navbar.html" %}
+{% block content_after_navbar %}
+
+{% block content_before_bottombar %}
+
+{% endblock %}
+    <div class="question-bottom-bar">
+        <ul>
+            <li class="subitem"><a href="/question/{{ question_id }}/new-answer">Add new answer</a></li>
+            <li class="question-delete-container">
+                <form action="/question/{{ question_id }}/delete" name="deletion" method="get">
+                    <input type="submit" class="button" name="deletion" value="Delete Question">
+                </form>
+            </li>
+            <li class="subitem"><a href="/question/{{ question_id }}/edit">Edit this question</a></li>
+            <li class="subitem"><a href="/question/{{ question_id }}/new-comment">Comment this question</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+</body>
+</html>

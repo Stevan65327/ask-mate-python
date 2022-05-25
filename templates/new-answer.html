@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Answer</title>
+</head>
+<body>
+{% extends "navbar.html" %}
+
+{% block content_after_navbar %}
+                     
+    <h2> {{ question['title'] }}</h2>
+    <p>  {{ question['message'] }}</p>
+    <h5>  Answer the question below: </h5>
+    <form name="new_answer" method="post">
+        <input name="answer" type="text">
+        <input type="submit">
+    </form>
+
+{% endblock %}
+</body>
+</html>
